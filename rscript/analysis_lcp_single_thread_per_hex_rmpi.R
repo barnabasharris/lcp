@@ -168,6 +168,10 @@ print(clusterCall(cl, function() Sys.info()))
 print(Sys.time())
 print('running analysis...')
 
+h <- rast('outputs/hex_16.tif')
+plot(h)
+source('rscript/lcp2.R')
+
 snow::clusterEvalQ(cl,source(file.path(getwd(),'rscript','lcp2.R')))
 
 l <- snow::clusterApplyLB(cl,
